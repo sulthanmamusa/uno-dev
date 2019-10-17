@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailerModule, HandlebarsAdapter } from '@nest-modules/mailer';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
+import { MerchantApiModule } from './merchant-api/merchant-api.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ConfigService } from './config/config.service';
         database: config.get('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: false,
+        logging: true
       }),
       inject: [ConfigService],
     }),
@@ -43,6 +45,7 @@ import { ConfigService } from './config/config.service';
     DatabaseModule,
     AuthModule,
     ConfigModule,
+    MerchantApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],

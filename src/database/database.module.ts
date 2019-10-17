@@ -52,9 +52,15 @@ import { WalletsController } from './controllers/wallets.controller';
 import { Roles } from './entities/roles.entity';
 import { RolesService } from './services/roles.service';
 import { RolesController } from './controllers/roles.controller';
+
 import { Users } from './entities/users.entity';
 import { UsersService } from './services/users.service';
 import { UsersController } from './controllers/users.controller';
+
+import { Merchants } from './entities/merchants.entity';
+import { MerchantsService } from './services/merchants.service';
+import { MerchantsController } from './controllers/merchants.controller';
+
 import { JwtStrategy } from '../auth/jwt.strategy';
 
 
@@ -78,6 +84,7 @@ const entities = [
 	Transactions,
 	Users,
 	Wallets,
+	Merchants
 ];
 const services = [
 	ConstantsService,
@@ -98,6 +105,7 @@ const services = [
 	TransactionsService,
 	UsersService,
 	WalletsService,
+	MerchantsService
 ];
 const controllers = [
 	ConstantsController,
@@ -118,6 +126,7 @@ const controllers = [
 	TransactionsController,
 	UsersController,
 	WalletsController,
+	MerchantsController
 ];
 
 @Module({

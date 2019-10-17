@@ -6,6 +6,6 @@ import { BaseEntity } from './base.entity';
 export class Credentials extends BaseEntity {
 	@Column('varchar') keyid: string;
 	@Column('varchar') secret: string;
-	@Column('int') customer_id: number;
+	@Column('int') merchant_id: number;
 
 }
