@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body } from '@nestjs/common';
 import { BaseController } from './base.controller';
 
 @Controller('api/orders')
@@ -19,7 +19,7 @@ export class OrdersController extends BaseController {
     }
 
     @Post()
-    async create(): Promise<any> {
+    async create(@Body() order: any): Promise<any> {
         return 'order created successfully!';
     }
 
