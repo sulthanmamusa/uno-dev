@@ -3,7 +3,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { ApiImplicitBody } from '@nestjs/swagger';
 import { LoginReq } from './auth.swagger';
-import { RegisterDto, ForgotPasswordDto, ResetPasswordDto } from './auth.validator';
+import { RegisterDto, ForgotPasswordDto, ResetPasswordDto, LoginDto } from './auth.validator';
 
 @Controller('auth')
 export class AuthController {
@@ -29,6 +29,11 @@ export class AuthController {
   @Post('resetPassword')
   async resetPassword(@Body() body: ResetPasswordDto): Promise<any>{
     return this.authService.resetPassword(body);
+  }
+
+  @Post('merchant-login')
+  async merchantLogin(@Body() merchant: LoginDto): Promise<any>{
+    return this.authService.merchantLogin(merchant.email, merchant.password);
   }
 
 }

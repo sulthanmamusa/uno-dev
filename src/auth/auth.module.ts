@@ -8,6 +8,8 @@ import { JwtStrategy } from './jwt.strategy';
 import { DatabaseModule } from '../database/database.module';
 import { LocalStrategy } from './local.strategy';
 import { BasicAuthStrategy } from './basic.strategy';
+import { MerchantController } from './merchant/merchant.controller';
+import { MerchantService } from './merchant/merchant.service';
 
 @Module({
   imports:[
@@ -18,7 +20,7 @@ import { BasicAuthStrategy } from './basic.strategy';
       signOptions: { expiresIn: '3600s' },
     })
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, BasicAuthStrategy],
-  controllers: [AuthController]
+  providers: [AuthService, MerchantService, LocalStrategy, JwtStrategy, BasicAuthStrategy],
+  controllers: [AuthController, MerchantController]
 })
 export class AuthModule {}
