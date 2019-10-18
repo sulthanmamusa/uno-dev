@@ -4,14 +4,12 @@ import { JwtService } from '@nestjs/jwt';
 import { RolesService } from '../database/services/roles.service';
 import { MailerService } from '@nest-modules/mailer';
 import { EncryptDecrypt } from '../utility/encrypt.decrypt';
-import { MerchantsService } from '../database/services/merchants.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly rolesService: RolesService,
-    private readonly merchantsService: MerchantsService,
     private readonly jwtService: JwtService,
     private readonly mailerService: MailerService,
   ) {}
@@ -71,16 +69,4 @@ export class AuthService {
     return await this.usersService.update({email},{password: body['password']});
   }
 
-  async merchantLogin(username: string, password: string) {
-    const merchant = await this.merchantsService.findAll({where:{email: username},select:['id','email','password','role_id']});
-    if(Array.isArray(merchant)){
-      if (merchant.length > 0 && merchant[0].password === password) {
-        const payload = { email: username, id: merchant[0].id, roles: 'merchant' };
-        return {
-          access_token: this.jwtService.sign(payload),
-        };
-      }
-    }
-    return false;
-  }
 }

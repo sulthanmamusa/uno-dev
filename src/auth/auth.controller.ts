@@ -31,9 +31,4 @@ export class AuthController {
     return this.authService.resetPassword(body);
   }
 
-  @Post('merchant-login')
-  async merchantLogin(@Body() merchant: LoginDto): Promise<any>{
-    return this.authService.merchantLogin(merchant.email, merchant.password);
-  }
-
 }
