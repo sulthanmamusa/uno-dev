@@ -75,6 +75,8 @@ const entities = [
 	Customerbanks,
 	Customers,
 	Faqs,
+	Invoices,
+	Merchants,
 	Methods,
 	Orderitems,
 	Orders,
@@ -87,9 +89,7 @@ const entities = [
 	Subscriptions,
 	Transactions,
 	Users,
-	Wallets,
-	Merchants,
-	Invoices
+	Wallets
 ];
 const services = [
 	ConstantsService,
@@ -97,6 +97,8 @@ const services = [
 	CustomerbanksService,
 	CustomersService,
 	FaqsService,
+	InvoicesService,
+	MerchantsService,
 	MethodsService,
 	OrderitemsService,
 	OrdersService,
@@ -109,9 +111,7 @@ const services = [
 	SubscriptionsService,
 	TransactionsService,
 	UsersService,
-	WalletsService,
-	MerchantsService,
-	InvoicesService
+	WalletsService
 ];
 const controllers = [
 	ConstantsController,
@@ -119,6 +119,8 @@ const controllers = [
 	CustomerbanksController,
 	CustomersController,
 	FaqsController,
+	InvoicesController,
+	MerchantsController,
 	MethodsController,
 	OrderitemsController,
 	OrdersController,
@@ -131,9 +133,7 @@ const controllers = [
 	SubscriptionsController,
 	TransactionsController,
 	UsersController,
-	WalletsController,
-	MerchantsController,
-	InvoicesController
+	WalletsController
 ];
 
 @Module({
