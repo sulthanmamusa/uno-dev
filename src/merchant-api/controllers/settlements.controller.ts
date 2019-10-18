@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { BaseController } from './base.controller';
 
-@Controller('settlements')
+@Controller('api/settlements')
 export class SettlementsController extends BaseController{
 
     constructor(){
