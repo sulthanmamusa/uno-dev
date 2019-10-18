@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Query } from '@nestjs/common';
 import { BaseController } from './base.controller';
 
 @Controller('api/orders')
@@ -9,7 +9,7 @@ export class OrdersController extends BaseController {
     }
 
     @Get()
-    async findAll(): Promise<any> {
+    async findAll(@Query() qr?: any): Promise<any> {
         return 'all orders';
     }
 
