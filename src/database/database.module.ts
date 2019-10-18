@@ -61,6 +61,10 @@ import { Merchants } from './entities/merchants.entity';
 import { MerchantsService } from './services/merchants.service';
 import { MerchantsController } from './controllers/merchants.controller';
 
+import { Invoices } from './entities/invoices.entity';
+import { InvoicesService } from './services/invoices.service';
+import { InvoicesController } from './controllers/invoices.controller';
+
 import { JwtStrategy } from '../auth/jwt.strategy';
 
 
@@ -84,7 +88,8 @@ const entities = [
 	Transactions,
 	Users,
 	Wallets,
-	Merchants
+	Merchants,
+	Invoices
 ];
 const services = [
 	ConstantsService,
@@ -105,7 +110,8 @@ const services = [
 	TransactionsService,
 	UsersService,
 	WalletsService,
-	MerchantsService
+	MerchantsService,
+	InvoicesService
 ];
 const controllers = [
 	ConstantsController,
@@ -126,7 +132,8 @@ const controllers = [
 	TransactionsController,
 	UsersController,
 	WalletsController,
-	MerchantsController
+	MerchantsController,
+	InvoicesController
 ];
 
 @Module({
