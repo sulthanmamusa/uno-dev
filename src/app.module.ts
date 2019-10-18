@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { MerchantApiModule } from './merchant-api/merchant-api.module';
+import { MerchantPanelModule } from './merchant-panel/merchant-panel.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { MerchantApiModule } from './merchant-api/merchant-api.module';
     AuthModule,
     ConfigModule,
     MerchantApiModule,
+    MerchantPanelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
