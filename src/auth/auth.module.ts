@@ -12,15 +12,15 @@ import { MerchantController } from './merchant/merchant.controller';
 import { MerchantService } from './merchant/merchant.service';
 
 @Module({
-  imports:[
-    forwardRef(() => DatabaseModule),
-    PassportModule,
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '3600s' },
-    })
-  ],
-  providers: [AuthService, MerchantService, LocalStrategy, JwtStrategy, BasicAuthStrategy],
-  controllers: [AuthController, MerchantController]
+    imports: [
+        forwardRef(() => DatabaseModule),
+        PassportModule,
+        JwtModule.register({
+            secret: jwtConstants.secret,
+            signOptions: { expiresIn: '3600s' },
+        })
+    ],
+    providers: [AuthService, MerchantService, LocalStrategy, JwtStrategy, BasicAuthStrategy],
+    controllers: [AuthController, MerchantController]
 })
-export class AuthModule {}
+export class AuthModule { }

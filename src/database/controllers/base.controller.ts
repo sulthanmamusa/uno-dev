@@ -1,6 +1,6 @@
 import { BaseService } from "../services/base.service";
 import { BaseEntity } from "../entities/base.entity";
-import { Get, Post, Body, Delete, Param, Put, UseGuards } from "@nestjs/common";
+import { Get, Body, Delete, Param, Put, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Roles } from "../../auth/roles.decorator";
 import { RolesGuard } from "../../auth/roles.guard";

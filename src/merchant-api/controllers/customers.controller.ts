@@ -10,21 +10,25 @@ export class CustomersController extends BaseController {
 
     @Get()
     async findAll(@Query() qr?: any): Promise<any> {
-        return 'all customers';
+        const result = 'all customers';
+        return { statusCode: 200, data: result };
     }
 
     @Get(':id')
     async findOne(@Param('id') id: number): Promise<any> {
-        return 'single customer';
+        const result = 'single customer';
+        return { statusCode: 200, data: result };
     }
 
     @Post()
     async create(@Body() customer: any): Promise<any> {
-        return 'customer created successfully!';
+        const result = 'customer created successfully!';
+        return { statusCode: 201, data: result };
     }
 
     @Put(':id')
     async update(@Param('id') id: number, @Body() customer: any): Promise<any> {
-        return 'customer updated successfully!';
+        const result = 'customer updated successfully!';
+        return { statusCode: 200, data: result };
     }
 }

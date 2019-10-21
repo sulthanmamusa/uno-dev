@@ -13,22 +13,26 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Request() req) {
-    return this.authService.login(req.user);
+    const result = await this.authService.login(req.user);
+    return { statusCode: 201, data: result };
   }
 
   @Post('register')
   async register(@Body() user: RegisterDto): Promise<any>{
-    return this.authService.register(user);
+    const result = await this.authService.register(user);
+    return { statusCode: 201, data: result };
   }
 
   @Post('forgotPassword')
   async forgotPassword(@Body() body: ForgotPasswordDto): Promise<any>{
-    return this.authService.forgotPassword(body.email);
+    const result = await this.authService.forgotPassword(body.email);
+    return { statusCode: 201, data: result };
   }
 
   @Post('resetPassword')
   async resetPassword(@Body() body: ResetPasswordDto): Promise<any>{
-    return this.authService.resetPassword(body);
+    const result = await this.authService.resetPassword(body);
+    return { statusCode: 201, data: result };
   }
 
 }

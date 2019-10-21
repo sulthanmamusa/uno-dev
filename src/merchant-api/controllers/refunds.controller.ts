@@ -10,17 +10,20 @@ export class RefundsController extends BaseController {
 
     @Get()
     async findAll(@Query() qr?: any): Promise<any>{
-        return 'This endpoint is used for retrieving list of refunds based on optional parameters';
+        const result = 'This endpoint is used for retrieving list of refunds based on optional parameters';
+        return { statusCode: 200, data: result };
     }
 
     @Get(':id')
     async findOne(@Param('id') id: number): Promise<any>{
-        return 'The following API retrieves the refund using the ID.';
+        const result = 'The following API retrieves the refund using the ID.';
+        return { statusCode: 200, data: result };
     }
 
     @Post()
     async create(@Body() refund: any): Promise<any>{
-        return 'This end-point create a refund.';
+        const result = 'This end-point create a refund.';
+        return { statusCode: 201, data: result };
     }
 
 }

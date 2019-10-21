@@ -23,7 +23,7 @@ export class MerchantService {
         };
       }
     }
-    return false;
+    return { success: false, message: 'username and/or password is wrong!' };
   }
 
   async register(merchant: any): Promise<any>{
