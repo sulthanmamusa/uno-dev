@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { CredentialsService } from '../services/credentials.service';
 import { Credentials } from '../entities/credentials.entity';
 import { BaseController } from './base.controller';
@@ -7,5 +7,10 @@ import { BaseController } from './base.controller';
 export class CredentialsController extends BaseController<Credentials> {
     constructor(private readonly credentialsService: CredentialsService){
         super(credentialsService)
+    }
+
+    @Post()
+    async create(@Body() entity : Credentials): Promise<number | object>{
+	    return await this.credentialsService.create(entity);
     }
 }

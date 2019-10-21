@@ -26,14 +26,14 @@ export class BaseController<T extends BaseEntity> {
     async findOne(@Param('id') id: number): Promise<T | object> {
         return await this.baseService.findOne(id);
     }
-
+/*
     @Post()
-    async create(@Body() entity : any): Promise<number | object>{
+    async create(@Body() entity : T): Promise<number | object>{
 	    return await this.baseService.create(entity);
     }
-
+*/
     @Put(':id')
-    async update(@Param('id') id: number, @Body() entity: any): Promise<boolean | object>{
+    async update(@Param('id') id: number, @Body() entity: T): Promise<boolean | object>{
         return await this.baseService.update(id,entity);
     }
 

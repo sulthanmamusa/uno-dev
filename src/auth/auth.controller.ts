@@ -1,9 +1,9 @@
-import { Controller, Request, Post, UseGuards, Body, Get } from '@nestjs/common';
+import { Controller, Request, Post, UseGuards, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { ApiImplicitBody } from '@nestjs/swagger';
 import { LoginReq } from './auth.swagger';
-import { RegisterDto, ForgotPasswordDto, ResetPasswordDto, LoginDto } from './auth.validator';
+import { RegisterDto, ForgotPasswordDto, ResetPasswordDto } from './auth.validator';
 
 @Controller('auth')
 export class AuthController {

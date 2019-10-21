@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { ConstantsService } from '../services/constants.service';
 import { Constants } from '../entities/constants.entity';
 import { BaseController } from './base.controller';
@@ -7,5 +7,10 @@ import { BaseController } from './base.controller';
 export class ConstantsController extends BaseController<Constants> {
     constructor(private readonly constantsService: ConstantsService){
         super(constantsService)
+    }
+
+    @Post()
+    async create(@Body() entity : Constants): Promise<number | object>{
+	    return await this.constantsService.create(entity);
     }
 }

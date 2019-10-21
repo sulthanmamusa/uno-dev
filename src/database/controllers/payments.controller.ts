@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { PaymentsService } from '../services/payments.service';
 import { Payments } from '../entities/payments.entity';
 import { BaseController } from './base.controller';
@@ -7,5 +7,10 @@ import { BaseController } from './base.controller';
 export class PaymentsController extends BaseController<Payments> {
     constructor(private readonly paymentsService: PaymentsService){
         super(paymentsService)
+    }
+
+    @Post()
+    async create(@Body() entity : Payments): Promise<number | object>{
+	    return await this.paymentsService.create(entity);
     }
 }

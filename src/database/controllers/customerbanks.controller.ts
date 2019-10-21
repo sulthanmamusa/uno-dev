@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { CustomerbanksService } from '../services/customerbanks.service';
 import { Customerbanks } from '../entities/customerbanks.entity';
 import { BaseController } from './base.controller';
@@ -7,5 +7,10 @@ import { BaseController } from './base.controller';
 export class CustomerbanksController extends BaseController<Customerbanks> {
     constructor(private readonly customerbanksService: CustomerbanksService){
         super(customerbanksService)
+    }
+
+    @Post()
+    async create(@Body() entity : Customerbanks): Promise<number | object>{
+	    return await this.customerbanksService.create(entity);
     }
 }
