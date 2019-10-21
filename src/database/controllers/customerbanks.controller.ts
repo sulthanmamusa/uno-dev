@@ -11,6 +11,7 @@ export class CustomerbanksController extends BaseController<Customerbanks> {
 
     @Post()
     async create(@Body() entity : Customerbanks): Promise<number | object>{
-	    return await this.customerbanksService.create(entity);
+        const result = await this.customerbanksService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

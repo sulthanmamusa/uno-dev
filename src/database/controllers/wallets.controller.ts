@@ -11,6 +11,7 @@ export class WalletsController extends BaseController<Wallets> {
 
     @Post()
     async create(@Body() entity : Wallets): Promise<number | object>{
-	    return await this.walletsService.create(entity);
+        const result = await this.walletsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

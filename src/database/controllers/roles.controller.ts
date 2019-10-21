@@ -11,6 +11,7 @@ export class RolesController extends BaseController<Roles> {
 
     @Post()
     async create(@Body() entity : Roles): Promise<number | object>{
-	    return await this.rolesService.create(entity);
+        const result = await this.rolesService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

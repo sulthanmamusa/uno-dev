@@ -11,6 +11,7 @@ export class ConstantsController extends BaseController<Constants> {
 
     @Post()
     async create(@Body() entity : Constants): Promise<number | object>{
-	    return await this.constantsService.create(entity);
+        const result = await this.constantsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

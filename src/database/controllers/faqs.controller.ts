@@ -11,6 +11,7 @@ export class FaqsController extends BaseController<Faqs> {
 
     @Post()
     async create(@Body() entity : Faqs): Promise<number | object>{
-	    return await this.faqsService.create(entity);
+        const result = await this.faqsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

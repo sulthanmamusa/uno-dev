@@ -11,6 +11,7 @@ export class RefundsController extends BaseController<Refunds> {
 
     @Post()
     async create(@Body() entity : Refunds): Promise<number | object>{
-	    return await this.refundsService.create(entity);
+        const result = await this.refundsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

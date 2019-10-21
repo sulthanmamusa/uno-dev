@@ -11,6 +11,7 @@ export class MethodsController extends BaseController<Methods> {
 
     @Post()
     async create(@Body() entity : Methods): Promise<number | object>{
-	    return await this.methodsService.create(entity);
+        const result = await this.methodsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

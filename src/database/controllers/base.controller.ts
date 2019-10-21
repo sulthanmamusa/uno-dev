@@ -14,31 +14,37 @@ export class BaseController<T extends BaseEntity> {
 
     @Get()
     async findAll(conditions?: any): Promise<T[] | object> {
-        return await this.baseService.findAll(conditions);
+        const result = await this.baseService.findAll(conditions);
+        return { statusCode: 200, data: result };
     }
 
     @Get('count')
     async countAll(conditions?: any): Promise<number | object> {
-        return await this.baseService.countAll(conditions);
+        const result =  await this.baseService.countAll(conditions);
+        return { statusCode: 200, data: result };
     }
 
     @Get(':id')
     async findOne(@Param('id') id: number): Promise<T | object> {
-        return await this.baseService.findOne(id);
+        const result = await this.baseService.findOne(id);
+        return { statusCode: 200, data: result };
     }
 /*
     @Post()
     async create(@Body() entity : T): Promise<number | object>{
-	    return await this.baseService.create(entity);
+        const result = await this.baseService.create(entity);
+        return { statusCode: 201, data: result };
     }
 */
     @Put(':id')
     async update(@Param('id') id: number, @Body() entity: T): Promise<boolean | object>{
-        return await this.baseService.update(id,entity);
+        const result = await this.baseService.update(id,entity);
+        return { statusCode: 200, data: result };
     }
 
     @Delete(':id')
     async delete(@Param('id') id: number): Promise<boolean | object> {
-        return await this.baseService.delete(id);
+        const result = await this.baseService.delete(id);
+        return { statusCode: 200, data: result };
     }
 }

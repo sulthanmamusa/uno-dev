@@ -11,6 +11,7 @@ export class OrdersController extends BaseController<Orders> {
 
     @Post()
     async create(@Body() entity : Orders): Promise<number | object>{
-	    return await this.ordersService.create(entity);
+        const result = await this.ordersService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

@@ -11,6 +11,7 @@ export class PluginsController extends BaseController<Plugins> {
 
     @Post()
     async create(@Body() entity : Plugins): Promise<number | object>{
-	    return await this.pluginsService.create(entity);
+        const result = await this.pluginsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }

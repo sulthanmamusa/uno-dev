@@ -11,6 +11,7 @@ export class CredentialsController extends BaseController<Credentials> {
 
     @Post()
     async create(@Body() entity : Credentials): Promise<number | object>{
-	    return await this.credentialsService.create(entity);
+        const result = await this.credentialsService.create(entity);
+        return { statusCode: 201, data: {id: result} };
     }
 }
