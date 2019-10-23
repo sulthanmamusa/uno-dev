@@ -1,7 +1,5 @@
-import { Controller, Request, Post, UseGuards, Body } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { Controller, Request, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ApiImplicitBody } from '@nestjs/swagger';
 import { LoginReq } from './auth.swagger';
 import { RegisterDto, ForgotPasswordDto, ResetPasswordDto } from './auth.validator';
 
@@ -9,13 +7,14 @@ import { RegisterDto, ForgotPasswordDto, ResetPasswordDto } from './auth.validat
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @ApiImplicitBody({name:'login',type:LoginReq, required:true})
-  @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req) {
-    const result = await this.authService.login(req.user);
-    return { statusCode: 201, data: result };
-  }
+	async login(@Body() user: LoginReq): Promise<any> {
+        const result = await this.authService.login(user.email, user.password);
+        if(!result.access_token){
+            throw new UnauthorizedException();
+        }
+		return { statusCode: 201, data: result };
+	}
 
   @Post('register')
   async register(@Body() user: RegisterDto): Promise<any>{

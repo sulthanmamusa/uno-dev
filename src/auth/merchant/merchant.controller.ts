@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { MerchantService } from './merchant.service';
 import { RegisterDto, ForgotPasswordDto, ResetPasswordDto, LoginDto } from './merchant.validator';
 
@@ -8,7 +8,10 @@ export class MerchantController {
 
 	@Post('login')
 	async login(@Body() merchant: LoginDto): Promise<any> {
-		const result = await this.merchantService.login(merchant.email, merchant.password);
+        const result = await this.merchantService.login(merchant.email, merchant.password);
+        if(!result.access_token){
+            throw new UnauthorizedException();
+        }
 		return { statusCode: 201, data: result };
 	}
 

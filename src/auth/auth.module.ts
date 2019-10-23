@@ -6,7 +6,6 @@ import { AuthController } from './auth.controller';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 import { DatabaseModule } from '../database/database.module';
-import { LocalStrategy } from './local.strategy';
 import { BasicAuthStrategy } from './basic.strategy';
 import { MerchantController } from './merchant/merchant.controller';
 import { MerchantService } from './merchant/merchant.service';
@@ -20,7 +19,7 @@ import { MerchantService } from './merchant/merchant.service';
             signOptions: { expiresIn: '3600s' },
         })
     ],
-    providers: [AuthService, MerchantService, LocalStrategy, JwtStrategy, BasicAuthStrategy],
+    providers: [AuthService, MerchantService, JwtStrategy, BasicAuthStrategy],
     controllers: [AuthController, MerchantController]
 })
 export class AuthModule { }

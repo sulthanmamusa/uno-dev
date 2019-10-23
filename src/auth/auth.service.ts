@@ -14,24 +14,18 @@ export class AuthService {
     private readonly mailerService: MailerService,
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
-    const user = await this.usersService.findAll({where:{email},select:['id','email','password','role_id']});
+  async login(username: string, password: string) {
+    const user = await this.usersService.findAll({where:{email: username},select:['id','email','password']});
     if(Array.isArray(user)){
-      if (user.length > 0 && user[0].password === pass) {
+      if (user.length > 0 && user[0].password === password) {
         const role = await this.rolesService.findOne(user[0]['role_id']);
-        user[0]['roles'] = role['name'];
-        const { password, role_id, ...result } = user[0];
-        return result;
+        const payload = { email: username, id: user[0].id, roles: role['name'] };
+        return {
+          access_token: this.jwtService.sign(payload),
+        };
       }
     }
-    return null;
-  }
-
-  async login(user: any) {
-    const payload = { email: user.email, id: user.id, roles: user.roles };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+    return { success: false, message: 'username and/or password is wrong!' };
   }
 
   async register(user: any): Promise<any>{
