@@ -61,6 +61,10 @@ import { Merchants } from './entities/merchants.entity';
 import { MerchantsService } from './services/merchants.service';
 import { MerchantsController } from './controllers/merchants.controller';
 
+import { Merchantbanks } from './entities/merchantbanks.entity';
+import { MerchantbanksService } from './services/merchantbanks.service';
+import { MerchantbanksController } from './controllers/merchantbanks.controller';
+
 import { Invoices } from './entities/invoices.entity';
 import { InvoicesService } from './services/invoices.service';
 import { InvoicesController } from './controllers/invoices.controller';
@@ -75,7 +79,8 @@ const entities = [
 	Customerbanks,
 	Customers,
 	Faqs,
-	Invoices,
+    Invoices,
+    Merchantbanks,
 	Merchants,
 	Methods,
 	Orderitems,
@@ -97,7 +102,8 @@ const services = [
 	CustomerbanksService,
 	CustomersService,
 	FaqsService,
-	InvoicesService,
+    InvoicesService,
+    MerchantbanksService,
 	MerchantsService,
 	MethodsService,
 	OrderitemsService,
@@ -119,7 +125,8 @@ const controllers = [
 	CustomerbanksController,
 	CustomersController,
 	FaqsController,
-	InvoicesController,
+    InvoicesController,
+    MerchantbanksController,
 	MerchantsController,
 	MethodsController,
 	OrderitemsController,
