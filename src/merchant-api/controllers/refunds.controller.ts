@@ -1,5 +1,6 @@
 import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
 import { BaseController } from './base.controller';
+import { Refunds } from '../../database/entities/refunds.entity';
 
 @Controller('api/refunds')
 export class RefundsController extends BaseController {
@@ -21,7 +22,7 @@ export class RefundsController extends BaseController {
     }
 
     @Post()
-    async create(@Body() refund: any): Promise<any>{
+    async create(@Body() refund: Refunds): Promise<any>{
         const result = 'This end-point create a refund.';
         return { statusCode: 201, data: result };
     }

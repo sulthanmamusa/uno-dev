@@ -39,7 +39,7 @@ export class BaseService<T extends BaseEntity>{
 			return {success: false, message: error.message};
         }
     }
-    async update(id: number | object, entity: object): Promise<boolean | object>{
+    async update(id: number | object, entity: object): Promise<{success:boolean, message:string}>{
         try {
             const result = await this.genericRepository.update(id, entity);
             return {success: true, message: 'Updated successfully!'};

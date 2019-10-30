@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from "@nestjs/common";
+import { Controller, Get, Post, Body } from "@nestjs/common";
 import { BaseController } from "./base.controller";
 import { MerchantsService } from "../../database/services/merchants.service";
 import { CurrentUser } from "../../utility/decorators/current.user";
@@ -14,11 +14,13 @@ export class MerchantsController extends BaseController {
 
     @Get('profile')
     async getProfile(@CurrentUser() merchant: any): Promise<any>{
-        return await this.merchantsService.findOne(merchant.id, {select:['name','email','phone']});
+        const result = await this.merchantsService.findOne(merchant.id, {select:['name','email','phone']});
+        return { statusCode: 200, data: result };
     }
 
     @Post('profile')
-    async updateProfile(@CurrentUser() merchant: any, merchants: Merchants): Promise<any>{
-        return await this.merchantsService.update(merchant.id, merchants);
+    async updateProfile(@CurrentUser() merchant: any, @Body() merchants: Merchants): Promise<any>{
+        const result = await this.merchantsService.update(merchant.id, merchants);
+        return { statusCode: 201, data: result };
     }
 }

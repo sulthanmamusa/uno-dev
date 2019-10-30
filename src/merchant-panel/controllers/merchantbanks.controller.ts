@@ -24,18 +24,12 @@ export class MerchantbanksController extends BaseController {
     @Post()
     async create(@Body() merchantbanks: Merchantbanks): Promise<any> {
         const result = await this.merchantbanksService.create(merchantbanks);
-        if(typeof result != 'number'){
-            return { statusCode: 200, message:'oops! something went wrong.' };
-        }
         return { statusCode: 201, data: result };
     }
 
     @Put(':id')
     async update(@Param('id') id: number, @Body() merchantbanks: Merchantbanks): Promise<any> {
         const result = await this.merchantbanksService.update(id,merchantbanks);
-        if(typeof result == 'object'){
-            return { statusCode: 200, message:'oops! something went wrong.' };
-        }
         return { statusCode: 201, data: result };
     }
 }

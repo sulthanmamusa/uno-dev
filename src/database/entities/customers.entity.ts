@@ -20,7 +20,7 @@ export class Customers extends BaseEntity {
 
 	@ApiModelProperty()
 	@IsNotEmpty()
-    @Column('varchar') password: string;
+    @Column('varchar') gstn: string;
     
     @ApiModelProperty()
 	@IsNotEmpty()
