@@ -1,29 +1,33 @@
 import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
 import { BaseController } from './base.controller';
 import { Refunds } from '../../database/entities/refunds.entity';
+import { RefundsService } from '../../database/services/refunds.service';
 
 @Controller('api/refunds')
 export class RefundsController extends BaseController {
 
-    constructor(){
+    constructor(
+        private refundsService: RefundsService
+    ){
         super()
     }
 
     @Get()
-    async findAll(@Query() qr?: any): Promise<any>{
-        const result = 'This endpoint is used for retrieving list of refunds based on optional parameters';
+    async findAll(@Query() qs?: any): Promise<any>{
+        const where: Refunds = qs || {status: true};
+        const result = await this.refundsService.findAll({where});
         return { statusCode: 200, data: result };
     }
 
     @Get(':id')
     async findOne(@Param('id') id: number): Promise<any>{
-        const result = 'The following API retrieves the refund using the ID.';
+        const result = await this.refundsService.findOne(id);
         return { statusCode: 200, data: result };
     }
 
     @Post()
     async create(@Body() refund: Refunds): Promise<any>{
-        const result = 'This end-point create a refund.';
+        const result = await this.refundsService.create(refund);;
         return { statusCode: 201, data: result };
     }
 

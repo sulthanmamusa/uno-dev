@@ -13,10 +13,8 @@ export class InvoicesController extends BaseController {
 
     @Get()
     async findAll(@Query() qs?: any): Promise<any> {
-        qs = qs || {status : true};
-        const result = await this.invoicesService.findAll({
-            where: qs
-        });
+        const where: Invoices = qs || {status : true};
+        const result = await this.invoicesService.findAll({where});
         return { statusCode: 200, data: result };
     }
 

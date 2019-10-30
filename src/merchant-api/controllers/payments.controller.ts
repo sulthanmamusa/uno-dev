@@ -1,21 +1,26 @@
 import { Controller, Post, Param, Get, Query } from '@nestjs/common';
 import { BaseController } from './base.controller';
+import { PaymentsService } from '../../database/services/payments.service';
+import { Payments } from '../../database/entities/payments.entity';
 
 @Controller('api/payments')
 export class PaymentsController extends BaseController{
-    constructor(){
+    constructor(
+        private paymentsService: PaymentsService
+    ){
         super()
     }
 
     @Get()
-    async findAll(@Query() qr?: any): Promise<any>{
-        const result = 'fetch all payments!';
+    async findAll(@Query() qs?: any): Promise<any>{
+        const where: Payments = qs || {status: true};
+        const result = await this.paymentsService.findAll({where});
         return { statusCode: 200, data: result };
     }
 
     @Get(':id')
     async findOne(@Param('id') id: number): Promise<any>{
-        const result = 'fetch a single payment!';
+        const result = await this.paymentsService.findOne(id);
         return { statusCode: 200, data: result };
     }
 

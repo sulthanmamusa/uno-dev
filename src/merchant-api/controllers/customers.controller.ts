@@ -14,8 +14,8 @@ export class CustomersController extends BaseController {
 
     @Get()
     async findAll(@Query() qs?: any): Promise<any> {
-        qs = qs || {status: true};
-        const result = await this.customersService.findAll({where:qs});
+        const where: Customers = qs || {status: true};
+        const result = await this.customersService.findAll({where});
         return { statusCode: 200, data: result };
     }
 
