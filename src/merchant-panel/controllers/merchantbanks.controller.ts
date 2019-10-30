@@ -22,13 +22,15 @@ export class MerchantbanksController extends BaseController {
     }
 
     @Post()
-    async create(@Body() merchantbanks: Merchantbanks): Promise<any> {
+    async create(@Body() merchantbanks: Merchantbanks, @CurrentUser() merchant: any): Promise<any> {
+        merchantbanks.merchant_id = merchant.id;
         const result = await this.merchantbanksService.create(merchantbanks);
         return { statusCode: 201, data: result };
     }
 
     @Put(':id')
-    async update(@Param('id') id: number, @Body() merchantbanks: Merchantbanks): Promise<any> {
+    async update(@Param('id') id: number, @Body() merchantbanks: Merchantbanks, @CurrentUser() merchant: any): Promise<any> {
+        merchantbanks.merchant_id = merchant.id;
         const result = await this.merchantbanksService.update(id,merchantbanks);
         return { statusCode: 201, data: result };
     }
