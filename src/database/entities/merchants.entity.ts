@@ -16,7 +16,11 @@ export class Merchants extends BaseEntity {
 
 	@ApiModelProperty()
 	@IsNotEmpty()
-	@Column('varchar') phone: string;
+    @Column('varchar') phone: string;
+    
+	@ApiModelProperty()
+	@IsNotEmpty()
+	@Column('bit') approved: boolean;
 
 	@ApiModelProperty()
 	@IsNotEmpty()

@@ -13,9 +13,9 @@ export class MerchantService {
   ) {}
 
   async login(username: string, password: string) {
-    const merchant = await this.merchantsService.findAll({where:{email: username},select:['id','email','password']});
+    const merchant = await this.merchantsService.findAll({where:{email: username},select:['id','email','password', 'approved']});
     if(Array.isArray(merchant)){
-      if (merchant.length > 0 && merchant[0].password === password) {
+      if (merchant.length > 0 && merchant[0].password === password && merchant[0].approved) {
         const payload = { email: username, id: merchant[0].id, roles: 'merchant' };
         return {
           access_token: this.jwtService.sign(payload),

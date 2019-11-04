@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { ValidationPipe } from '@nestjs/common';
 import { MerchantPanelModule } from './merchant-panel/merchant-panel.module';
 import { MerchantApiModule } from './merchant-api/merchant-api.module';
+import { AdminModule } from './admin/admin.module';
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,7 +30,7 @@ async function bootstrap() {
         .build();
 
     const document = SwaggerModule.createDocument(app, options, { include: [DatabaseModule] });
-    SwaggerModule.setup('admin-api-docs', app, document);
+    SwaggerModule.setup('super-admin-api-docs', app, document);
 
     const document2 = SwaggerModule.createDocument(app, options, { include: [AuthModule] });
     SwaggerModule.setup('auth-api-docs', app, document2);
@@ -39,6 +40,9 @@ async function bootstrap() {
 
     const document4 = SwaggerModule.createDocument(app, options, { include: [MerchantApiModule] });
     SwaggerModule.setup('pg-api-docs', app, document4);
+
+    const document5 = SwaggerModule.createDocument(app, options, {include: [AdminModule]});
+    SwaggerModule.setup('admin-api-docs', app, document5);
 
     await app.listen(PORT);
 }
