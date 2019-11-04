@@ -14,18 +14,21 @@ export class CustomersController extends BaseController {
 
     @Get()
     async getCustomers(@CurrentUser() merchant: any):Promise<any> {
-       return await this.customersService.findAll({where:{merchant_id: merchant.id}, select: ['id','name','email']});
+        const result = await this.customersService.findAll({where:{merchant_id: merchant.id}, select: ['id','name','email']});
+        return { statusCode: 200, data: result };
     }
 
     @Post()
     async create(@CurrentUser() merchant: any, @Body() customers: Customers): Promise<any> {
         customers.merchant_id = merchant.id;
-        return await this.customersService.create(customers);
+        const result = await this.customersService.create(customers);
+        return { statusCode: 201, data: result };
     }
 
     @Put(':id')
     async update(@Param('id') id: number, @Body() customers: Customers, @CurrentUser() merchant: any): Promise<any> {
         customers.merchant_id = merchant.id;
-        return await this.customersService.update(id,customers);
+        const result = await this.customersService.update(id,customers);
+        return { statusCode: 201, data: result };
     }
 }

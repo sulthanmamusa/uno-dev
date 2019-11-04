@@ -24,7 +24,7 @@ export class MerchantsConroller extends BaseController {
         return { statusCode: 200, data: result };
     }
 
-    @Put(':id')
+    @Put('approve/:id')
     async approve(@Param('id') id: number): Promise<any> {
         const result = await this.merchantsService.update(id, {approved: true});
         return { statusCode: 201, data: result };
