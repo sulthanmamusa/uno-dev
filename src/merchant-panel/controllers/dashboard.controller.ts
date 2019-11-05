@@ -9,7 +9,7 @@ export class DashboardController extends BaseController {
 
     @Get()
     async dashboard(): Promise<any>{
-        const result = 'Dashboard details!';
+        const result = [];
         return { statusCode: 200, data: result };
     }
 }

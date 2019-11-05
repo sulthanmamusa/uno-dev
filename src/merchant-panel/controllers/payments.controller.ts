@@ -21,6 +21,6 @@ export class PaymentsController extends BaseController {
             const payments = await this.paymentsService.findAll({where:{id: In(orderIds)}});
             return { statusCode: 200, data: payments }
         }
-        return { statusCode: 200, data: 'There is no order!' }
+        return { statusCode: 200, data: [] }
     }
 }

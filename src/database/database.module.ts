@@ -69,6 +69,19 @@ import { Invoices } from './entities/invoices.entity';
 import { InvoicesService } from './services/invoices.service';
 import { InvoicesController } from './controllers/invoices.controller';
 
+import { RequestCategories } from './entities/request_categories.entity';
+import { RequestCategoriesServices } from './services/request_categories.service';
+import { RequestCategoriesController } from './controllers/request_categories.controller';
+
+
+import { RequestSources } from './entities/request_sources.entity';
+import { RequestSourcesService } from './services/request_sources.service';
+import { RequestSourcesController } from './controllers/request_sources.controller';
+
+import { ServiceRequests } from './entities/service_requests.entity';
+import { ServiceRequestsService } from './services/service_requests.service';
+import { ServiceRequestsController } from './controllers/service_requests.controller';
+
 import { JwtStrategy } from '../auth/jwt.strategy';
 
 
@@ -88,8 +101,11 @@ const entities = [
 	Payments,
 	Plugins,
 	Products,
-	Refunds,
-	Roles,
+    Refunds,
+    RequestCategories,
+    RequestSources,
+    Roles,
+    ServiceRequests,
 	Settlements,
 	Subscriptions,
 	Transactions,
@@ -111,8 +127,11 @@ const services = [
 	PaymentsService,
 	PluginsService,
 	ProductsService,
-	RefundsService,
-	RolesService,
+    RefundsService,
+    RequestCategoriesServices,
+    RequestSourcesService,
+    RolesService,
+    ServiceRequestsService,
 	SettlementsService,
 	SubscriptionsService,
 	TransactionsService,
@@ -134,8 +153,11 @@ const controllers = [
 	PaymentsController,
 	PluginsController,
 	ProductsController,
-	RefundsController,
-	RolesController,
+    RefundsController,
+    RequestCategoriesController,
+    RequestSourcesController,
+    RolesController,
+    ServiceRequestsController,
 	SettlementsController,
 	SubscriptionsController,
 	TransactionsController,

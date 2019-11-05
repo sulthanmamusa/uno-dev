@@ -9,6 +9,7 @@ import { RefundsController } from './controllers/refunds.controller';
 import { SettlementsController } from './controllers/settlements.conroller';
 import { MerchantbanksController } from './controllers/merchantbanks.controller';
 import { InvoicesController } from './controllers/invoices.controller';
+import { ServiceRequestsController } from './controllers/service_requests.controller';
 
 @Module({
     controllers: [
@@ -20,6 +21,7 @@ import { InvoicesController } from './controllers/invoices.controller';
         OrdersController,
         PaymentsController,
         RefundsController,
+        ServiceRequestsController,
         SettlementsController
     ],
     imports:[
