@@ -4,7 +4,7 @@ import { WebhooksService } from "../services/webhooks.service";
 import { Post, Body, Controller } from "@nestjs/common";
 
 @Controller('sa/webhooks')
-export class WebhooksController extends BaseController<Webhooks>(Webhooks) {
+export class WebhooksController extends BaseController<Webhooks> {
     constructor(
         private webhooksService: WebhooksService
     ){
